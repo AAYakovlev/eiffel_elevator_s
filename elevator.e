@@ -11,14 +11,13 @@ class
 	create
 		make
 
-	feature{NONE} -- Attributes
+	feature -- Attributes
 		cabin: CABIN
 		floors: ARRAY[FLOOR]
 
-	feature{NONE} -- Initialization
+	feature -- Initialization
 		make(floor_count: INTEGER)
 			local
-				c1: CABIN
 				i: INTEGER
 				f:FLOOR
 			do
@@ -32,8 +31,7 @@ class
 				 	floors.force(f, i)
 				 	i:=i+1
 				end
-				create c1.make (floors[0], Current)
-				cabin := c1
+				create cabin.make (floors[0], Current)
 			end
 
 	feature

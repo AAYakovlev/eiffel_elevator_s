@@ -48,6 +48,7 @@ feature
 		require
 			target_not_void: target /= VOID
 			cur_floor_not_void: current_floor /= VOID
+			not_the_same_floor: current_floor /= target
 		local
 			i: INTEGER
 		do

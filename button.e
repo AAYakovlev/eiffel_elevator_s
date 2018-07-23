@@ -23,15 +23,14 @@ feature -- Initialization
 feature -- Attributes
 
 	elevator: ELEVATOR
-			-- 	elevator which is seen since elevator created
 
 feature
 	summon(floor: FLOOR)
 	require
-		B1: floor /= VOID
-		B2: elevator /= VOID
-		B3: elevator.cabin /= VOID
-		B4: elevator.closed
+		floor_not_void: floor /= VOID
+		elevator_not_void: elevator /= VOID
+		cabin_not_void: elevator.cabin /= VOID
+		doors_closed: elevator.closed
 	local
 		cab: CABIN
 	do
