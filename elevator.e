@@ -13,34 +13,41 @@ class
 
 	feature -- Attributes
 		cabin: CABIN
-		floors: ARRAY[FLOOR]
+		floor_count: INTEGER
+		floor_buttons: ARRAY[BUTTON]
 
 	feature -- Initialization
-		make(floor_count: INTEGER)
+		make(floor_init: INTEGER)
 			local
+				b: BUTTON
 				i: INTEGER
-				f:FLOOR
 			do
-				create floors.make_empty
+				floor_count := floor_init
+				create floor_buttons.make_empty
+				create cabin.make ()
+
 				from
 					i := 0
-				until
-					i >= floor_count
-				loop
-					create f.make(i)
-				 	floors.force(f, i)
-				 	i:=i+1
-				end
-				create cabin.make (floors[0], Current)
+    			until
+     				i >= floor_count
+    			loop
+     				create b.make(Current, i)
+     				floor_buttons.force(b, i)
+     				i := i + 1
+
+    			end
+
 			end
 
 	feature
-		get_cabin: CABIN
-			require
-	        	cabin_present: cabin/=VOID
+		get_buttons: ARRAY[BUTTON]
 			do
-				Result := cabin
-					-- for now we have one-cabine implementation
+			  Result := floor_buttons
 			end
 
+	feature
+		summon(floor_number: INTEGER)
+			do
+				cabin.move(floor_number)
+			end
 end

@@ -10,31 +10,28 @@ class
 create
 	make
 
+feature -- Attributes
+	elevator: ELEVATOR
+	floor_number: INTEGER
+
 feature -- Initialization
-	make (init_elevator: ELEVATOR)
-		require
-			init_elevator /= VOID
+	make (elevator_init: ELEVATOR; floor_init: INTEGER)
+
 		do
-			elevator := init_elevator
-		ensure
-			elevator /= VOID
+			elevator := elevator_init
+			floor_number := floor_init
 		end
 
-feature -- Attributes
-
-	elevator: ELEVATOR
+feature
+	press
+	do
+		elevator.summon(floor_number)
+	end
 
 feature
-	summon(floor: FLOOR)
-	require
-		floor_not_void: floor /= VOID
-		elevator_not_void: elevator /= VOID
-		cabin_not_void: elevator.cabin /= VOID
-		doors_closed: elevator.closed
-	local
-		cab: CABIN
+	get_floor: INTEGER
 	do
-		cab := elevator.get_cabin()
+		Result := floor_number
 	end
 
 end
