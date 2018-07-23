@@ -30,7 +30,7 @@ feature
 	require
 		B1: floor /= VOID
 		B2: elevator /= VOID
-		B3: elevator.cabins.count > 0
+		B3: elevator.cabin /= VOID
 		B4: elevator.closed
 	local
 		cab: CABIN

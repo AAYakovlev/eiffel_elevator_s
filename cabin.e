@@ -44,7 +44,7 @@ feature -- Attributes
 	buttons: ARRAY[BUTTON]
 
 feature
-	move(target: FlOOR)
+	move(target: FLOOR)
 		require
 			target_not_void: target /= VOID
 			cur_floor_not_void: current_floor /= VOID
