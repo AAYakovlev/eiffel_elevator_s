@@ -57,10 +57,10 @@ class
 			note
 				explicit: wrapping
 			require
-				cabin /= VOID
-				cabin.is_wrapped
-				modify_field("cabin", Current)
-				modify_model("current_floor", cabin)
+				cabin_not_void: cabin /= VOID
+				cabin_is_wrapped: cabin.is_wrapped
+				mod_f: modify_field("cabin", Current)
+				mod_m: modify_model("current_floor", cabin)
 			do
 				cabin.move(floor_number)
 			end
