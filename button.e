@@ -33,6 +33,8 @@ feature
 		elevator.is_wrapped
 	do
 		elevator.summon(floor_number)
+	ensure
+		elevator.cabin.current_floor = floor_number
 	end
 
 feature
