@@ -27,7 +27,6 @@ feature
 	require
 		elevator /= VOID
 		floor_number > 0
-		floor_number < 7
 		elevator.cabin /= VOID
 		elevator.cabin.is_wrapped
 		elevator.is_wrapped
