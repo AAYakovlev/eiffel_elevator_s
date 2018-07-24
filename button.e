@@ -24,6 +24,9 @@ feature -- Initialization
 
 feature
 	press
+	require
+		elevator /= VOID
+		floor_number > 0
 	do
 		elevator.summon(floor_number)
 	end

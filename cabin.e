@@ -3,6 +3,7 @@ note
 	author: ""
 	date: "$Date$"
 	revision: "$Revision$"
+	model: current_floor, is_doors_open
 
 class
 	CABIN
@@ -23,6 +24,8 @@ feature -- Initialization
 
 feature
 	move(floor_number: INTEGER)
+		require
+			modify_model("current_floor", Current)
 		local
 			i: INTEGER
 		do
@@ -30,7 +33,7 @@ feature
 		end
 	get_current_floor: INTEGER
 		require
-			C1: current_floor /= VOID
+			C1: current_floor > 0
 		do
 			Result := current_floor
 		end
@@ -41,16 +44,16 @@ feature
 		do
 			is_doors_open := true
 		ensure
-			opened: is_doors_open = true
+			opened: is_doors_open
 		end
 
 	close_doors
 		require
-			is_closed: is_doors_open = true
+			is_open: is_doors_open
 		do
 			is_doors_open := false
 		ensure
-			opened: is_doors_open = false
+			closed: is_doors_open = false
 	    end
 
 
