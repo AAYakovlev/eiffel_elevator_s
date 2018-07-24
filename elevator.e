@@ -20,8 +20,7 @@ class
 	feature -- Initialization
 		make(floor_init: INTEGER)
 			require
-				floor_init > 0
-				floor_init < 7
+				floor_init >= 0
 			local
 				b: BUTTON
 				i: INTEGER
